@@ -57,11 +57,16 @@ def tick args
     args.state.player.y -= 10
   end
 
-  # fireball
+  # render fireball
   if args.inputs.keyboard.key_down.z ||
     args.inputs.keyboard.key_down.j ||
     args.inputs.controller_one.key_down.a
     args.state.fireballs << [args.state.player.x, args.state.player.y, 'fireball']
+  end
+
+  # move fireball
+  args.state.fireballs.each do |fireball|
+    fireball[0] += 10 + 2
   end
 
   args.outputs.labels << args.state.fireballs
