@@ -61,7 +61,7 @@ def tick args
   if args.inputs.keyboard.key_down.z ||
     args.inputs.keyboard.key_down.j ||
     args.inputs.controller_one.key_down.a
-    args.state.fireballs << [args.state.player.x, args.state.player.y, 'fireball']
+    args.state.fireballs << [args.state.player.x + 30, args.state.player.y + 30, 'fireball']
   end
 
   # move fireball
