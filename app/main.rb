@@ -26,7 +26,7 @@ def tick args
 
   # update player state and animate                           
   how_many_frames_in_sprite_sheet = 2
-  how_many_ticks_to_hold_each_frame = 4
+  how_many_ticks_to_hold_each_frame = 10
   should_the_index_repeat = true
 
   player_sprite_index = 0.frame_index(how_many_frames_in_sprite_sheet, how_many_ticks_to_hold_each_frame, should_the_index_repeat)
