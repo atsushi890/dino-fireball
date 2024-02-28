@@ -25,7 +25,7 @@ def tick args
                           }
 
   # update player state and animate                           
-  how_many_frames_in_sprite_sheet = 6
+  how_many_frames_in_sprite_sheet = 2
   how_many_ticks_to_hold_each_frame = 4
   should_the_index_repeat = true
 
@@ -43,5 +43,22 @@ def tick args
     args.state.player.y += 10
   elsif args.inputs.down
     args.state.player.y -= 10
+  end
+
+  # set boundaries
+  if args.state.player.x + args.state.player.w > args.grid.w
+    args.state.player.x = args.grid.w - args.state.player.w
+  end
+
+  if args.state.player.x < 0
+    args.state.player.x = 0
+  end
+
+  if args.state.player.y + args.state.player.h > args.grid.h
+    args.state.player.y = args.grid.h - args.state.player.h
+  end
+
+  if args.state.player.y < 0
+    args.state.player.y = 0
   end
 end
