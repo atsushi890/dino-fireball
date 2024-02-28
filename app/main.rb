@@ -11,6 +11,18 @@ def tick args
     tile_w: 24,
     tile_h: 24
   }
+  args.state.fireballs ||= []
+
+  # background render
+  args.outputs.solids << {
+    x: 0,
+    y: 0,
+    w: args.grid.w,
+    h: args.grid.h,
+    r: 92,
+    g: 120,
+    b: 230,
+  }
 
   # Update sprite via player state
   args.outputs.sprites << { x: args.state.player.x,
@@ -44,6 +56,15 @@ def tick args
   elsif args.inputs.down
     args.state.player.y -= 10
   end
+
+  # fireball
+  if args.inputs.keyboard.key_down.z ||
+    args.inputs.keyboard.key_down.j ||
+    args.inputs.controller_one.key_down.a
+    args.state.fireballs << [args.state.player.x, args.state.player.y, 'fireball']
+  end
+
+  args.outputs.labels << args.state.fireballs
 
   # set boundaries
   if args.state.player.x + args.state.player.w > args.grid.w
